@@ -8,7 +8,7 @@ const multer = require("multer");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : false}))
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(cors());
@@ -19,11 +19,11 @@ const mongodbAPI = "mongodb+srv://robinmandhotia:Robin123@rabincluster.ukgzcqb.m
 
 mongoose.connect(mongodbAPI);
 
-app.get("/", function(req, res ){
+app.get("/", function (req, res) {
     res.send("Welcome to Eccomerce Homepage Thank You!")
 })
 
 
 const PORT = 5000;
-app.listen(PORT, () => console.log('Server Started at PORT:5000') )
+app.listen(PORT, () => console.log('Server Started at PORT:', PORT));
 
