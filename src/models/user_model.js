@@ -1,6 +1,6 @@
-import {Schema,model} from "mongoose";
-const uuid = require ("uuid");
-const bcrypt = require("bcrypt");
+import { Schema, model } from "mongoose";
+import { v1 } from "uuid";
+import { genSaltSync, hashSync } from "bcrypt";
 
 const UserSchema = new Schema({
     id: {type : String, unique: true},
@@ -18,13 +18,13 @@ const UserSchema = new Schema({
 })
 
 UserSchema.pre("save", function(next)  {
-    this.id = uuid.v1(),
+    this.id = v1(),
     this.createdOn = new Date(),
     this.updatedOn = new Date(),
 
     // HAsh the Psssword 
-     salt =  bcrypt.genSaltSync(10),
-     hash = bcrypt.hashSync(this.password,salt),
+     salt =  genSaltSync(10),
+     hash = hashSync(this.password,salt),
     this.password = hash,
 
     next();
@@ -42,4 +42,4 @@ UserSchema.pre(['update', 'findOneAndUpdate','updateOne']),function (next) {
 
 const userModel = model('User',UserSchema);
 
-module.exports = userModel;
+module.exports= userModel;
