@@ -42,4 +42,4 @@ UserSchema.pre(['update', 'findOneAndUpdate','updateOne']),function (next) {
 
 const userModel = model('User',UserSchema);
 
-module.exports= userModel;
+export default userModel;

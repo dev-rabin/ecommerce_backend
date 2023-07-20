@@ -1,4 +1,5 @@
 import UserModel from "../models/user_model.js";
+
 const UserContollers = {
     createAccount: async function (req,res){
         try {
@@ -15,4 +16,4 @@ const UserContollers = {
     }
 };
 
-module.exports= UserContollers;
+export default UserContollers;

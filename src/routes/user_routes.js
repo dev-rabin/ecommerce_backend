@@ -1,6 +1,7 @@
-import { createAccount } from "../controllers/user_controllers.js";
-const UserRoutes = require('express').Router(); 
+const UserRoutes = require('express');
+import UserContollers from './../controllers/user_controllers.js';
 
-UserRoutes.post("/createAccount", createAccount),
+UserRoutes.post("/createAccount",UserContollers.createAccount);
 
- module.exports=UserRoutes;
+
+export default UserRoutes;
